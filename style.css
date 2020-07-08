@@ -1,0 +1,126 @@
+* {
+    margin:0;
+    padding:0;
+    border:0;
+  }
+.container{
+    height: 350px;
+    width: 230px;
+    background-color: rgb(86, 163, 207);
+}
+.container2{
+    height: 300px;
+    width: 200px;
+    background-color: rgb(69, 154, 185);
+}
+.container3{
+    
+    height: 12px;
+    width: 210px;
+    background-color: rgb(88, 178, 91);
+    border-top-right-radius: 12px;
+}
+.container4{
+    height: 33px;
+    width: 220px;
+    background-color: rgb(97, 201, 104);
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 15px;
+}
+.content1{
+    position: relative;
+    top: 250px;
+    height: 50px;
+    width: 200px;
+    background-color: rgb(75, 158, 80);
+    z-index: 0;
+}
+.content2{
+    position: relative;
+    top: 120px;
+    left: 80px;
+    height: 130px;
+    width: 30px;
+    background-color: rgb(126, 105, 88);
+}
+.content2_1{
+    position: relative;
+    top: 15px;
+    left: -5px;
+    height: 60px;
+    width: 10px;
+    transform: rotate(-20deg);
+    background-color: rgb(126, 105, 88);
+}
+.content2_2{
+    position: absolute;
+    top: 15px;
+    left: 25px;
+    height: 60px;
+    width: 10px;
+    transform: rotate(20deg);
+    background-color: rgb(126, 105, 88);
+}
+.content2_3{
+    position: absolute;
+    top: -80px;
+    left: -60px;
+    height: 100px;
+    width: 100px;
+    transform: rotate(10deg);
+    background-color: rgb(124, 250, 140);
+    border-radius: 50%;
+    box-shadow: inset 10px 0 14px 0 rgb(103, 213, 110);
+}
+.content2_4{
+    position: absolute;
+    top: -60px;
+    left: 5px;
+    height: 150px;
+    width: 150px;
+    transform: rotate(0deg);
+    background-color: rgb(124, 250, 140);
+    border-radius: 50%;
+    box-shadow: inset 10px 0 14px 0 rgb(103, 213, 110);
+}
+.content2_5{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    height: 160px;
+    width: 160px;
+    transform: rotate(0deg);
+    background-color: rgb(124, 250, 140);
+    border-radius: 50%;
+    box-shadow: inset -10px 0 14px 0 rgb(103, 213, 110);
+}
+.content3{
+    position: relative;
+    left: 140px;
+    top: 60px;
+    height: 60px;
+    width: 30px;
+    background-color: rgb(194, 115, 48);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.content3_1{
+    position: relative;
+    top: 5px;
+    left: 5px;
+    height: 10px;
+    width: 20px;
+    background-color: rgb(51, 50, 55);
+    border-radius: 5px;
+    z-index: 1;
+}
+.content3_2{
+    position: relative;
+    top: -2px;
+    left: 5px;
+    height: 10px;
+    width: 20px;
+    background-color: rgb(242, 147, 79);
+    border-radius: 5px;
+    z-index: 0;
+}
