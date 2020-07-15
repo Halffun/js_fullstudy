@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        canvas{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+    <canvas id="myCanvas" width="600" height="45"></canvas>
+    <script>
+        // var canvas = document.getElementById('myCanvas')
+        // canvas.width = window.innerWidth 
+        // canvas.height = window.innerHeight
+
+        // var ctx = canvas.getContext('2d')
+        // var WIDTH = canvas.width
+        // var HEIGHT = canvas.height
+        // ctx.fillText("hello world", WIDTH/2, HEIGHT/2)
+        // var c = document.getElementById("myCanvas")
+        // var ctx = c.getContext("2d")
+        // ctx.font = "bold 12px arial"
+        // ctx.textAlign = "center"
+        var canvas = document.getElementById('myCanvas'),
+            ctx = canvas.getContext('2d'),
+            gradient = ctx.createLinearGradient(0, 0, 0, 40);
+
+        ctx.shadowColor = 'rgba(0,0,0,0.9)';
+        ctx.shadowOffsetX = 2;
+        ctx.shadowOffsetY = 2;
+        ctx.shadowBlur = 2;
+
+        gradient.addColorStop(0,'black');
+        gradient.addColorStop(0.3,'green');
+        gradient.addColorStop(0.6,'yellow');
+        gradient.addColorStop(0.6,'blue');
+        gradient.addColorStop(1,'pink');
+        gradient.addColorStop(0.5,'red');
+
+        ctx.font = '40px Microsoft YaHei';
+        // ctx.textAlign = "center"
+        ctx.fillStyle = gradient;
+
+        ctx.fillText('hello world', 130, 40);
+        ctx.restore();
+    </script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<view class="wrapper">
+  <view class="group">
+    <view class="group-bar">
+      <view class="group-title">7月15日</view>
+    </view>
+    <view class="group-content">
+      <view class="group-content-item">
+        <view class="group-content-item-desc"></view>
+      </view>
+    </view>
+  </view>
+</view>

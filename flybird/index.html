@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/index.css">
+  <title>Fly Bird</title>
+</head>
+<body>
+  <div id="wrapBg">
+    <div id="headTitle"><!-- 开始标题 -->
+      <img id="headBird" src="./img/bird0.png" alt="小鸟">
+    </div>
+    <button id="startBtn"></button><!-- 开始按钮 -->
+    <div id="grassLand1"></div><!-- 草地1 -->
+    <div id="grassLand2"></div><!-- 草地2 -->
+    <div id="score">
+      <div id="num1"></div>
+      <div id="num2"></div>
+      <div id="num3"></div>
+    </div>
+    <div id="gameOver">
+      <img src="img/game_over.jpg" alt="game over">
+      <img src="img/message.jpg" alt="message">
+      <img id="ok" src="img/ok.jpg" alt="ok">
+    </div>
+  </div>
+
+  <script src="./js/bird.js"></script>
+  <script src="./js/baseObj.js"></script>
+  <script src="./js/block.js"></script>
+  <script>
+    var jsWrapBg = document.getElementById('wrapBg')
+    var jsHeadTitle = document.getElementById('headTitle')// 获取标题
+    var jsHeadBird = document.getElementById('headBird')// 获取标题中的小鸟
+    var blockArr = [] // 装管道
+    var blockDistance = baseObj.randomNum(120, 350) // 管道之间的间隔
+
+    var jsScore = document.getElementById('score') //获取分数
+    var jsNum1 = document.getElementById('num1')
+    var jsNum2 = document.getElementById('num2')
+    var jsNum3 = document.getElementById('num3')
+    var score = 0; // 分数初始化
+
+    var jsGameOver = document.getElementById('gameOver')
+    var jsOkBtn = document.getElementById('ok')
+
+    var Y = 3 // 标题摆动的幅度
+    var index = 0
+    var imgArr = ['img/bird0.png', 'img/bird1.png']
+    // 利用帧动画的原理作出小鸟翅膀摆动的样子
+    var headWaveTimer = setInterval(headWave, 200) // 设置标题上下摆动的定时器
+    function headWave() {
+      Y *= -1   // Y = Y * -1
+      jsHeadTitle.style.top = jsHeadTitle.offsetTop + Y + 'px'
+      jsHeadBird.src = imgArr[index++]
+      if (index == 2) {
+        index = 0
+      }
+    }
+  
+    var jsGrassLand1 = document.getElementById('grassLand1')
+    var jsGrassLand2 = document.getElementById('grassLand2')
+    var landTimer = setInterval(landRun, 30) // 让草地动起来
+    function landRun() {
+      if(jsGrassLand1.offsetLeft <= -343) {
+        jsGrassLand1.style.left = 343 + 'px'
+      }
+      if(jsGrassLand2.offsetLeft <= -343) {
+        jsGrassLand2.style.left = 343 + 'px'
+      }
+      jsGrassLand1.style.left = jsGrassLand1.offsetLeft - 3 + 'px'
+      jsGrassLand2.style.left = jsGrassLand2.offsetLeft - 3 + 'px'
+
+      // 管道的移动
+      if (blockArr.length) {
+        for (var i = 0; i < blockArr.length; i++) {
+          blockArr[i].moveBlock()
+          var x = baseObj.rectangleCrashExamine(blockArr[i].downDivWrap, bird.div)
+          var y = baseObj.rectangleCrashExamine(blockArr[i].upDivWrap, bird.div)
+          var z = bird.div.offsetTop >= 390
+          if (x || y || z) {
+            window.clearInterval(landTimer) // 清除草地移动的定时器
+            jsWrapBg.onclick = null
+            bird.fallSpeed = 0
+            jsScore.style.display = 'none' // 隐藏计分器
+            jsGameOver.style.display = 'block' // 显示gameover面板
+          }
+        }
+        
+        if (blockArr[blockArr.length - 1].downDivWrap.offsetLeft < (450 - blockDistance)) {
+          blockDistance = baseObj.randomNum(130, 250)
+          var newBlock = new Block()
+          newBlock.createBlock()
+          blockArr.push(newBlock)
+        }
+
+        if (blockArr[0].downDivWrap.offsetLeft == -12) { // 判断小鸟是否完全过了该管道
+          score++ // 过了分数就加1
+          if (score < 10) { 
+            jsNum1.style.backgroundImage = "url(img/" + score + ".jpg)" // 得分小于10，得几分就用代表几分的图
+          } else if (score < 100) {
+            jsNum2.style.display = "block" // 将容器变成块级便于图片的排列
+            jsNum1.style.backgroundImage = "url(img/" + parseInt(score/10) + ".jpg)" // 对分数除以十后取整，得到十位数分数的数字并得到该数字的图片
+            jsNum2.style.backgroundImage = 'url(img/' + score%10 + '.jpg)' // 对分数除以十求余，得到个位数分数的数字并得到该数字的图片
+          } else if (score < 1000) {
+            jsNum3.style.display = 'block'
+            jsNum1.style.backgroundImage = 'url(img/' + parseInt(score/100) + '.jpg)' // 对分数除以100后取整，得到百位数分数的数字并得到该数字的图片
+            jsNum2.style.backgroundImage = 'url(img/' + parseInt(score/10)%10 + '.jpg)' // 对分数除以十后取整后除以十求余，得到十位数分数的数字并得到该数字的图片
+            jsNum3.style.backgroundImage = 'url(img/' + score%10 + '.jpg)' // 对分数除以十求余，得到个位数分数的数字并得到该数字的图片
+
+          }
+          console.log(score)
+        }
+
+        if (blockArr[0].downDivWrap.offsetLeft < -50) { // 清除通过后的管道
+          jsWrapBg.removeChild(blockArr[0].downDivWrap) // 当第一个下管道完全过去了之后就将他从数组中删除
+          jsWrapBg.removeChild(blockArr[0].upDivWrap) // 当第一个上管道完全过去了之后就将他从数组中删除
+          blockArr.shift(blockArr[0]) // 把数组的第一个元素从其中删除，并返回第一个元素的值
+        }
+      }
+    }
+    
+
+    var jsSatrtBtn = document.getElementById('startBtn')
+    jsSatrtBtn.onclick = function() { // 为start按钮添加一个点击事件的处理程序
+      jsHeadTitle.style.display = 'none' // 隐藏标题
+      clearInterval(headWaveTimer) // 关闭标题摆动的定时器
+      jsSatrtBtn.style.display = 'none'
+      // 插入小鸟到界面当中
+      bird.showBird(jsWrapBg)
+      bird.flyBird() // 小鸟下落
+      bird.wingWave() // 小鸟翅膀扇动
+      jsWrapBg.onclick = function () {
+        bird.fallSpeed = -8
+      }
+      
+      // 出现管道
+      var b = new Block()
+      b.createBlock()
+      blockArr.push(b)
+      jsNum1.style.display = 'block'
+    }
+
+    jsOkBtn.onclick = function() {
+      window.location.href = 'index.html' // 点击确定按钮后跳转到index.html,即刷新页面
+    }
+  </script>
+</body>
+</html>
