@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="db-global-nav" class="global-nav">
+    <div class="bd">  
+      <div class="top-nav-info">
+        <a href="#" class="nav-login" rel="nofollow">登录/注册</a>
+      </div>
+      <div class="top-nav-doubanapp">
+        <a href="#" class="lnk-doubanapp">下载豆瓣客户端</a>
+      <div id="doubanapp-tip" style="display: none;">
+        <a href="#" class="tip-link">豆瓣 
+          <span class="version">6.0</span> 
+          全新发布
+        </a>
+        <a href="javascript: void 0;" class="tip-close">×</a>
+      </div>
+      <div id="top-nav-appintro" class="more-items">
+        <p class="appintro-title">豆瓣</p>
+        <p class="qrcode">扫码直接下载</p>
+        <div class="download">
+          <a href="#">iPhone</a>
+          <span>·</span>
+          <a href="#" class="download-android">Android</a>
+        </div>
+      </div>
+    </div>
+    <div class="global-nav-items">
+      <ul>
+        <li class="">
+          <a href="#" target="_blank" data-moreurl-dict="{"from":"top-nav-click-main","uid":"0"}">豆瓣</a>
+        </li>
+        <li class="">
+          <a href="#" target="_blank" data-moreurl-dict="{"from":"top-nav-click-book","uid":"0"}">读书</a>
+        </li>
+        <li class="on">
+          <a href="#"  data-moreurl-dict="{"from":"top-nav-click-movie","uid":"0"}">电影</a>
+        </li>
+        <li class="">
+          <a href="#" target="_blank" data-moreurl-dict="{"from":"top-nav-click-music","uid":"0"}">音乐</a>
+        </li>
+        <li class="">
+          <a href="#" target="_blank" data-moreurl-dict="{"from":"top-nav-click-location","uid":"0"}">同城</a>
+        </li>
+        <li class="">
+          <a href="#" target="_blank" data-moreurl-dict="{"from":"top-nav-click-group","uid":"0"}">小组</a>
+        </li>
+        <li class="">
+          <a href="#" target="_blank" data-moreurl-dict="{"from":"top-nav-click-read","uid":"0"}">阅读</a>
+        </li>
+        <li class="">
+          <a href="#" target="_blank" data-moreurl-dict="{"from":"top-nav-click-fm","uid":"0"}">FM</a>
+        </li>
+        <li class="">
+          <a href="#" data-moreurl-dict="{"from":"top-nav-click-time","uid":"0"}">时间</a>
+        </li>
+        <li class="">
+          <a href="#" data-moreurl-dict="{"from":"top-nav-click-market","uid":"0"}">豆品</a>
+        </li>
+      </ul>
+      </div>
+    </div>
+  </div>
+  <!-- <script>
+    ;window._GLOBAL_NAV = {
+      DOUBAN_URL: "#",
+      N_NEW_NOTIS: 0,
+      N_NEW_DOUMAIL: 0
+    };
+  </script>
+
+      <script src="//img3.doubanio.com/dae/accounts/resources/527f922/shire/bundle.js" defer="defer"></script>
+
+      <link href="//img3.doubanio.com/dae/accounts/resources/527f922/movie/bundle.css" rel="stylesheet" type="text/css">
+
+  <div id="db-nav-movie" class="nav">
+    <div class="nav-wrap">
+    <div class="nav-primary">
+      <div class="nav-logo">
+        <a href="#">豆瓣电影</a>
+      </div>
+      <div class="nav-search">
+        <form action="https:&#47;&#47;search.douban.com&#47;movie/subject_search" method="get">
+          <fieldset>
+            <legend>搜索：</legend>
+            <label for="inp-query">
+            </label>
+            <div class="inp"><input id="inp-query" name="search_text" size="22" maxlength="60" placeholder="搜索电影、电视剧、综艺、影人" value=""></div>
+            <div class="inp-btn"><input type="submit" value="搜索"></div>
+            <input type="hidden" name="cat" value="1002" />
+          </fieldset>
+        </form>
+      </div>
+    </div>
+    </div>
+    <div class="nav-secondary">
+      
+  <div class="nav-items">
+    <ul>
+      <li    ><a href="#"
+      >影讯&购票</a>
+      </li>
+      <li    ><a href="#"
+      >选电影</a>
+      </li>
+      <li    ><a href="#"
+      >电视剧</a>
+      </li>
+      <li    ><a href="#"
+      >排行榜</a>
+      </li>
+      <li    ><a href="#"
+      >分类</a>
+      </li>
+      <li    ><a href="#"
+      >影评</a>
+      </li>
+      <li    ><a href="#"
+      >2019年度榜单</a>
+      </li>
+      <li    ><a href="#"
+              target="_blank"
+      >2019书影音报告</a>
+      </li>
+    </ul>
+  </div>
+
+      <a href="#" class="movieannual"></a>
+    </div>
+  </div>
+
+  <script id="suggResult" type="text/x-jquery-tmpl">
+    <li data-link="{{= url}}">
+              <a href="{{= url}}" onclick="moreurl(this, {from:'movie_search_sugg', query:'{{= keyword }}', subject_id:'{{= id}}', i: '{{= index}}', type: '{{= type}}'})">
+              <img src="{{= img}}" width="40" />
+              <p>
+                  <em>{{= title}}</em>
+                  {{if year}}
+                      <span>{{= year}}</span>
+                  {{/if}}
+                  {{if sub_title}}
+                      <br /><span>{{= sub_title}}</span>
+                  {{/if}}
+                  {{if address}}
+                      <br /><span>{{= address}}</span>
+                  {{/if}}
+                  {{if episode}}
+                      {{if episode=="unknow"}}
+                          <br /><span>集数未知</span>
+                      {{else}}
+                          <br /><span>共{{= episode}}集</span>
+                      {{/if}}
+                  {{/if}}
+              </p>
+          </a>
+          </li>
+    </script>
+
+      <script src="//img3.doubanio.com/dae/accounts/resources/527f922/movie/bundle.js" defer="defer"></script>
+  
+      <div id="wrapper">
+                
+      <div id="content">
+          
+      <div id="dale_movie_subject_top_icon"></div>
+      <h1>
+          <span property="v:itemreviewed">灰猎犬号 Greyhound</span>
+              <span class="year">(2020)</span>
+      </h1>
+
+          <div class="grid-16-8 clearfix">
+              
+
+              
+              <div class="article">
+                  
+      
+
+      
+
+
+
+
+
+          <div class="indent clearfix">
+              <div class="subjectwrap clearfix">
+                  <div class="subject clearfix">
+                      
+
+
+
+  <div id="mainpic" class="">
+      <a class="nbgnbg" href="https://movie.douban.com/subject/26871906/photos?type=R" title="点击看更多海报">
+          <img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2591289975.webp" title="点击看更多海报" alt="Greyhound" rel="v:image" />
+    </a>
+  </div> -->
+</body>
+</html>

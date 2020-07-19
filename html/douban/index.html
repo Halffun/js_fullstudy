@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="ua-window ua-webkit">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,7 +24,7 @@
     <h1>
         <a href="#">豆瓣</a>
     </h1>
-    <div class="anony-shrh">
+    <div class="anony-srh">
         <form action="#" method="get">
             <span class="inp">
                 <input type="text" maxlength="60" size="12" placeholder="书籍、电影、音乐、小组、小站、成员" name="q" autocomplete="off">
@@ -33,6 +33,42 @@
                 <input type="submit" value="搜索">
             </span>
         </form>
+    </div>
+    <div id="anony-reg-new" style="background-image: url(./img/16ad990ec23uwn790d4.jpg);">
+      <div class="wrapper">
+        <div class="login">
+          <iframe style="height: 300px; width: 300px " src="https://accounts.douban.com/passport/login_popup?login_source=anony" frameborder="0">
+          </iframe>
+        </div>
+        <div class="app">
+          <p class="app-title">
+            "豆瓣"
+            <span>6.0</span>
+          </p>
+          <p class="app-slogan">
+          </p>
+          <a href="#" class="lnk-app">下载豆瓣App</a>
+          <div class="app-qr">
+            <a href="javascript: void 0;" class="lnkqr" id="expand-qr">
+              <img src="./img/icon_qrcode_green.png" width="28" height="28" >
+            </a>
+            <div class="app-qr-expand">
+              <img src="./img/doubanapp_qrcode.png" width="160" height="160">
+              <p>IOS / Android 扫码直接下载</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>
+        Do(function() {
+          var app_qr = $('.app-qr');
+          app_qr.hover(function() {
+            app_qr.addClass('open');
+          }, function() {
+            app_qr.removeClass('open');
+          });
+        });
+      </script>
     </div>
 </div>
 </body>

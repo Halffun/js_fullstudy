@@ -1,0 +1,137 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+html {
+  color: #111;
+  background: #fff;
+}
+html body,
+html td,
+html th,
+html .pl,
+html input {
+  font-size: 13px;
+}
+body,
+td,
+th {
+  font: 12px Helvetica, Arial, sans-serif;
+  line-height: 1.62;
+}
+body {
+  margin: 0;
+}
+#db-global-nav a:link,
+#db-global-nav a:visited,
+#db-global-nav a:hover,
+#db-global-nav a:active {
+  color: #d5d5d5;
+}
+#db-global-nav #doubanapp-tip .tip-link:link,
+#db-global-nav #doubanapp-tip .tip-link:visited,
+#db-global-nav #doubanapp-tip .tip-link:hover,
+#db-global-nav #doubanapp-tip .tip-link:active {
+  color: #13bc39;
+  background: #fff;
+}
+#db-global-nav {
+  height: 28px;
+  color: #d5d5d5;
+  background-color: #545652;
+  min-width: 950px;
+  font: 12px Helvetica, Arial, sans-serif;
+  line-height: 1.62;
+  font-size: 12px;
+}
+#db-global-nav .more-items {
+  display: none;
+  position: absolute;
+  left: 0;
+}
+#db-global-nav .top-nav-info {
+  float: right;
+  margin: 0 12px 0 0;
+  line-height: 28px;
+  margin-top: 5px;
+}
+#db-global-nav .top-nav-info a {
+  display: inline-block;
+  zoom: 1;
+  margin: 0;
+  padding: 0 12px;
+  height: 28px;
+  margin-left: 10px;
+}
+#db-global-nav a {
+  cursor: pointer;
+  text-decoration: none;
+}
+#db-global-nav .top-nav-doubanapp {
+  position: relative;
+  float: right;
+  margin-right: 5px;
+  line-height: 28px;
+}
+#db-global-nav .top-nav-doubanapp .lnk-doubanapp {
+  display: inline-block;
+  zoom: 1;
+  padding: 0 8px;
+  height: 28px;
+}
+#db-global-nav .top-nav-doubanapp .lnk-doubanapp .more-items {
+  padding: 10px 20px 30px;
+  left: -76px;
+  width: 211px;
+  border-top: none;
+  color: #111;
+  font-size: 15px;
+  line-height: 1.62;
+  font-weight: bold;
+  text-align: center;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+#db-global-nav .top-nav-doubanapp .lnk-doubanapp .more-items .appintro-title {
+  padding-top: 170px;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 24px;
+  font-weight: 400;
+  background: url("./img/nav_doubanapp_6.png") no-repeat center;
+}
+#db-global-nav #doubanapp-tip {
+  display: none;
+  position: absolute;
+  top: 28px;
+  border: 1px solid;
+  padding: 0 30px 0 10px;
+  color: #13bc39;
+  background: #fff;
+  z-index: 10;
+  white-space: nowrap;
+}
+#db-global-nav #doubanapp-tip .tip-close {
+  position: absolute;
+  right: 6px;
+  width: 15px;
+  height: 15px;
+  line-height: 26px;
+  text-align: center;
+}
+a:visited {
+  color: #669;
+  text-decoration: none;
+}
+a:link {
+  color: #37a;
+  text-decoration: none;
+}
+a:visited {
+  color: #669;
+  text-decoration: none;
+}
+a:link {
+  color: #37a;
+  text-decoration: none;
+}
