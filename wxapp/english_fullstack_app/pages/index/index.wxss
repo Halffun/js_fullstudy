@@ -1,0 +1,32 @@
+.container{
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  height: 4vh;
+}
+.bike{
+  padding-left: 15vw;  
+}
+.c_bike{
+
+  padding-left: 40vw;
+}
+.bike-btn{
+  display: inline-block;
+  font-size: 15px;
+  letter-spacing: 2px;
+  font-weight: bold;
+  color: #666;
+}
+.bottomLine{
+  width: 40px;
+  height: 3px;
+  background-color: #24D1B8;
+  position: absolute;
+  bottom: 1;
+  transition: left 0.5s;
+}
+.wrapper{
+  background-color: #ffffff;
+  height: 40vh;
+}
