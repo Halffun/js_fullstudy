@@ -37,10 +37,33 @@
 //   let tmp
 // }
 
-var a = 'a'
-var a = 'aa'
-console.log(a) // aa
+// var a = 'a'
+// var a = 'aa'
+// console.log(a) // aa
 
-let b = 'b'
-let b = 'bb'
-console.log(b) // 报错
+// let b = 'b'
+// let b = 'bb'
+// console.log(b) // 报错
+
+
+
+
+
+// -------------------------------------
+
+
+// const num = 1234
+
+// num = 1000
+
+// console.log(num)
+
+
+// if (true) {
+//   console.log(age)
+//   const age = 18
+// }
+
+const message = 'Hello World'
+const message = 'hello'
+console.log(message)
