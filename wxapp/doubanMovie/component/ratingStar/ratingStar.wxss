@@ -1,0 +1,5 @@
+/* component/ratingStar/ratingStar.wxss */
+.star-wrapper{
+  display: flex;
+  
+}

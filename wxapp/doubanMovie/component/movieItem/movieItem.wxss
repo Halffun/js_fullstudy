@@ -1,0 +1,28 @@
+/* component/movieItem/movieItem.wxss */
+.item{
+  display: inline-flex; /* 可以允许其他容器与我当前这个弹性容器去到同一行 */
+}
+.item .info{
+  display: flex;
+  flex-direction: column;/* 改变弹性容器继承的方向 */
+}
+.name{
+  font-size: 32rpx;
+  font-weight: bold;
+  max-width: 200rpx;
+  white-space: nowrap; /* 超出则打点 */
+  overflow: hidden;  /* 超出则打点 */
+  text-overflow: ellipsis;/* 超出则打点 */
+}
+.img{
+ width: 201rpx;
+ height: 301rpx; 
+ margin-bottom: 20rpx;
+ border-radius: 10rpx;
+}
+.score-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 26rpx;
+}
