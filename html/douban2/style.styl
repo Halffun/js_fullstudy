@@ -13,6 +13,11 @@ body
   font-family: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif
   position relative
 
+div, p, span, a 
+    margin: 0
+    padding: 0
+
+
 a, input 
   outline: 0
 
@@ -25,6 +30,11 @@ input, textarea, button, select, a
 
 section 
   margin-bottom 30px
+
+ul
+  list-style: none
+  margin 0
+  padding 0
 
 .nav
   &__head
@@ -435,7 +445,6 @@ body .page, body #app, body .msite-max-width, body .msite-fixed-max-width
     margin-left 5px
   a
     .vendor-go-app
-      display inline-block
       color rgba(255,255,255,0.7)
       vertical-align middle
       float right
@@ -453,3 +462,156 @@ body .page, body #app, body .msite-max-width, body .msite-fixed-max-width
   a
     img 
       width 100%
+
+.card
+  margin 0 18px
+  .subject-intro
+    margin-bottom 20px
+    h2
+      color #818181
+      margin 0 0 15px
+      font-size 15px
+      font-weight normal
+    .bd
+      p
+        font-size 15px
+        color #191919
+        line-height 22px
+        margin 0
+        padding 0
+  .celebrities
+    h2
+      color #818181
+      margin 0 0 15px
+      font-size 15px
+      font-weight normal
+  .section-content
+    .movie-celebrities
+      margin-right -18px
+    .items
+      font-size 0
+      white-space: nowrap
+      overflow-x auto
+      .item__celebrity:first-child
+        margin-left 0
+      .item__celebrity
+        font-size 14px
+        width 70px
+      .item
+        display inline-block
+        vertical-align top
+        text-align center
+        a
+          color #111
+          .item-poster
+            background-image url(./imgs/p271.jpg)
+            width 100%
+            overflow hidden
+            background-size cover
+            background-position center
+            border-radius: 4px
+            &:before
+              content: ""
+              float left
+              margin-top 142.85714%
+          .item-title
+            display: -webkit-box
+            overflow hidden
+            -webkit-box-orient: vertical
+            -webkit-line-clamp 1
+            font-size 11px
+            line-height 1.4
+            white-space normal
+            text-align center
+            color #191919
+            margin-top 5px
+          .item-title.role
+            color #818181
+      .item>*
+        white-space normal
+  .subject-pics
+    margin-bottom 15px
+    h2
+      font-size 0
+      color #818181
+      margin 0 0 15px
+      font-weight normal
+      .pics-title
+        display inline-block
+        font-size 0.15rem
+        span
+          font-size 15px
+      a
+        .app-link
+          float: right 
+          font-size 0.13rem
+          &:after
+            content: '>'
+            display inline-block
+            font-size 0.13rem
+            line-height 22px
+            color #21C522
+    .photo-list
+      position relative
+      height 100px
+      margin-left -15px
+      ul
+        padding-bottom 20px
+        word-break keep-all
+        white-space nowrap
+        overflow: scroll
+        width auto
+        position absolute
+        left 0
+        right -15px
+        li:first-child
+          margin-left 15px
+        .video
+          width 160px
+          overflow hidden
+          background-size cover
+          background-repeat no-repeat
+          border-radius: 4px
+        li
+          margin 0
+          height 100px
+          display inline-block
+          margin-left 2px
+        .video-trailer
+          position relative
+          &:after
+            content: "预告片"
+            position absolute
+            top 4px
+            left 4px
+            color #fff
+            background-color #e28e30
+            font-size 11px
+            line-height 1
+            padding 3px
+            border-radius: 2px
+        .video
+          span
+            position absolute
+            width 0
+            height 0
+            left 50%
+            top 50%
+            img
+              height 34px
+              width 34px
+              display inline-block
+              transform: translate(-50%, -50%)
+              border-radius: 4px
+        .time
+          color #fff
+          position absolute
+          right 0
+          bottom 0
+          font-size 11px
+          background-color rgba(0,0,0,0.5)
+          padding 2px 4px
+        .video-commit
+          position relative
+          
+        
