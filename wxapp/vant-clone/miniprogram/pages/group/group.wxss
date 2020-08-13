@@ -1,0 +1,37 @@
+/* miniprogram/pages/group/group.wxss */
+.container{
+  width: 90%;
+  margin: 20rpx auto;
+  background: #ffffff;
+  padding: 20rpx 0;
+  border-radius: 20rpx;
+  box-shadow: 0 7px 20px #ececec;
+}
+.group{
+  display: flex;
+  justify-content: left;
+  padding: 20rpx 25rpx 40rpx 25rpx;
+}
+.group-img image{
+  width: 40rpx;
+  height: 40rpx;
+  padding-top: 10rpx;
+  padding-right: 15rpx;
+}
+.my-group{
+  text-align: left;
+  font-size: 40rpx;
+  padding: 0 auto;
+}
+.group-items{
+  display: flex;
+  justify-content: space-between;
+  font-size: 35rpx;
+  padding: 20rpx 25rpx 0 25rpx;
+  border-top: 1px solid #ececec;
+}
+.group-item-img image{
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+}

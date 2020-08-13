@@ -1,0 +1,16 @@
+<!--miniprogram/pages/group/group.wxml-->
+<view class="container">
+  <view class="group">
+    <view class="group-img">
+      <image src="https://677a-gzhiyi-154dd4-1256703754.tcb.qcloud.la/group3.png?sign=1119403c4109bbb505d07aa6d42ffdff&t=1545558495"/>
+    </view>
+    <view class="my-group">我的群组</view>
+  </view>
+  <view class="group-items" wx:for="{{List}}" wx:key="index">
+    <view class="group-item" >{{item.name}}</view>
+    <view class="group-item-img">
+      <image src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1616270381,3020505789&fm=15&gp=0.jpg"/>
+      <van-icon name="arrow" size="40rpx"/>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,32 @@
+/* miniprogram/pages/index/index.wxss */
+.new-item{
+  width: 80%;
+  margin: 40rpx auto;
+  background: #ffffff;
+  height: 200rpx;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx;
+  box-shadow: 0 7px 20px #ececec;
+  border-radius: 38rpx;
+}
+.new-item image{
+  width: 124rpx;
+  height: 124rpx;
+}
+.right-conner{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.right-conner .icon-name{
+  margin-right: 14rpx;
+}
+.icon-arrow{
+  text-align: right;
+  padding-right: 13rpx;
+}
+.new-item:hover{
+  box-shadow: none;
+}
