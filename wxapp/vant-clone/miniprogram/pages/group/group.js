@@ -28,21 +28,26 @@ Page({
   onShow: function () {
     const self = this
     wx.cloud.callFunction({
-      name: "getDatas"
-    }).then(res => {
-      console.log(res);
-      // for (let i = 0 ; i < res.result.data.length; i++){
+      name: "getDatas",
+      data: {},
+      success(res) {
+        console.log(res);
         self.setData({
-          List :  res.result.data
+          List: res.result
         })
-      // }
-        
-      
-      
-      
-    }).catch(err => {
-      console.log(err);
+      },
+      fail(res) {
+
+      }
     })
+    // .then(res => {
+    //   console.log(res);
+    //     self.setData({
+    //       List: res.result
+    //     })  
+    // }).catch(err => {
+    //   console.log(err);
+    // })
   },
 
   /**

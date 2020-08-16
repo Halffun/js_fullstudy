@@ -9,8 +9,8 @@
   <view class="group-items" wx:for="{{List}}" wx:key="index">
     <view class="group-item" >{{item.name}}</view>
     <view class="group-item-img">
-      <image src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1616270381,3020505789&fm=15&gp=0.jpg"/>
-      <van-icon name="arrow" size="40rpx"/>
+      <image src="{{item.}}"/>
+      <van-icon name="arrow" size="40rpx" style="#c6c6c6"/>
     </view>
   </view>
 </view>
