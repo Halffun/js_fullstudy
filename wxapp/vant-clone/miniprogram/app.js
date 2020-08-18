@@ -37,11 +37,8 @@ App({
             fail: () => {},
             complete: () => {}
           });
-            
         }
       },
-      fail: () => {},
-      complete: () => {}
     });
 
     this.globalData = {}

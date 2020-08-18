@@ -28,5 +28,5 @@ exports.main = async (event, context) => {
       returnResult.push(oneGroup.data[i])
     }
   }
-  return returnResult.sort((a,b) => b.createTime)
+  return returnResult.sort((a, b) => b.createTime - a.createTime)
 }

@@ -7,7 +7,7 @@ const db = cloud.database({env})
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  const userInfo = event.userInfo // {avatar；'',}
+  const userInfo = event.userInfo // {avatar；'', sex: '', userInfo: {}}
   // 先查询有无该openId
   const checkUser = await db.collection('user').where({
     openId: userInfo.openId

@@ -9,7 +9,6 @@ const db = cloud.database({env})
 // 云函数入口函数
 exports.main = async (event, context) => {
   // console.log(event); {groupName: '', userInfo: {appId: '', openId: ''}}
-  // 连通数据库
   const userInfo = event.userInfo
   // 连通数据库
   return await db.collection('group').add({
