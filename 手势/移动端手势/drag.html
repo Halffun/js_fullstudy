@@ -1,0 +1,52 @@
+
+<style>
+  .box{
+    width: 100vw;
+    height: 50vh;
+    background-color: red;
+  }
+</style>
+<div class="box"></div>
+<script>
+  // tap 点击
+  // 移动端的 click 有一定延迟 所以自己实现 
+  // fastClick
+  const box = document.querySelector('.box')
+  box.addEventListener('click', () => {
+    console.log('click start');
+  })
+  box.addEventListener('touchstart', () => {
+    console.log('自己的 tap 事件');
+  })
+  box.addEventListener('mousedown', (e) => {
+    let time = setTimeout(() => {
+      console.log('press start');
+    }, 500)
+    let startX = e.clientX, startY = e.clientY;
+    function handleMove(event) {
+      let endX = event.clientX, endY = event.clientY;
+      let diffX = endX - startX, diffY = endY - startY;
+      // 移动了 10px
+      if (diffX ** 2 + diffY ** 2 > 10000) {
+        console.log('pan 发生了');
+        if (Math.abs(diffX) > Math.abs(diffY)) {
+          console.log('left or right');
+          if (diffX > 0) {
+            console.log('pan right');
+          } else {
+            console.log('pan left');
+          }
+        }
+      }
+      // 前提 已经 down
+      // box.style.transform = `translate3d(${event.clientX-25}px, ${event.clientY-25}px, 0)`
+    }
+    document.addEventListener('mousemove', handleMove)
+    function handleUp() {
+      clearTimeout(time)
+      document.removeEventListener('mousemove', handleMove)
+      document.removeEventListener('mouseup', handleUp)
+    }
+    document.addEventListener('mouseup', handleUp)
+  })  
+</script>
