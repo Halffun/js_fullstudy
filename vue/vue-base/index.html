@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.common.dev.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <!-- <div v-show="isSure">潇湘阁</div>
+    <div>大翔哥</div> -->
+
+    <!-- <div class="item" v-for="item in people" :key="index">
+      <p>{{item.name}}-{{item.age}}</p>
+    </div> -->
+
+    <!-- <div class="msg">
+      <span>{{message}}</span><br>
+      <span v-text="message"></span><br>
+      <span v-html="newMessage"></span>
+    </div> -->
+
+    <div class="count">
+      <p>{{count}}</p>
+      <button v-on:click="add">+</button>
+      <button @click="reduce">-</button>
+    </div>
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello World',
+        newMessage: '<h2>Hello Vue!</h2>',
+        isSure: false,
+        list: ['a', 'b', 'c', 'd'],
+        people: [
+          { name: '祥祥', age: 18 },
+          { name: '浩楠', age: 19 },
+          { name: '元隆', age: 20 },
+        ],
+        count: 0
+      },
+      methods: {
+        add() {
+          // console.log('add');
+          this.count++
+        },
+        reduce() {
+          this.count--
+        }
+      },
+      
+      beforeCreate() {
+        console.log('beforeCreate');
+      },
+      created() {
+        console.log('created');
+      },
+      beforeMount() {
+        console.log('beforeMount');
+      },
+      mounted() {
+        console.log('mounted');
+      },
+      beforeUpdate() {
+        console.log('beforeUpdate');
+      },
+      updated() {
+        console.log('updated');
+      },
+      beforeDestroy() {
+        console.log('beforeDistroy');
+      },
+      destroyed() {
+        console.log('distroyed');
+      }
+    })
+  </script>
+</body>
+</html>
