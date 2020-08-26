@@ -38,6 +38,7 @@ export default new Router({
     },
     {
       path: '/abc',
+      name: 'abc',
       component: Error,
       beforeEnter: (to, from, next) => {
         console.log('我进入了404页面');
