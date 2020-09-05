@@ -60,9 +60,10 @@ export default {
     }
   },
   created() {
-    console.log(this.$route.params.userName);
-    let userName = this.$route.params.userName
-    this.userName = userName
+    // console.log(this.$route.params.userName);
+    // let userName = this.$route.params.userName
+    // this.userName = userName
+    this.userName = localStorage.getItem('name')
   },
   methods: {
     handleCommand(command) {

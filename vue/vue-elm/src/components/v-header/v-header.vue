@@ -2,28 +2,56 @@
   <div class="header">
     <div class="content-wrapper">
       <div class="avatar">
-        <img width="64" height="64" src="https://dss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2612976007,742133808&fm=26&gp=0.jpg" alt="">
+        <img width="64" height="64" :src="seller.avatar" alt="">
       </div>
       <div class="content">
         <div class="title">
           <span class="brand"></span>
-          <span class="name">粥品香坊</span>
+          <span class="name">{{seller.name}}</span>
         </div>
         <div class="description">
-          蜂鸟专送/38分钟送达
+          {{seller.description}}/{{seller.deliveryTime}}分钟送达
         </div>
-        <div class="support">
-          <img class="support-ico" src="./brand@2x.png" alt="">
-          <span class="text">在线支付满28减29</span>
+        <div class="support" v-if="seller.supports">
+          <support-ico :size=1 :type="seller.supports[0].type"></support-ico>
+          <span class="text">{{seller.supports[0].description}}</span>
         </div>
       </div>
+      <div class="support-count" v-if="seller.supports">
+        <span class="count">{{seller.supports.length}}个</span>
+        <i class="icon-keyboard_arrow_right"></i>
+      </div>
+    </div>
+    <div class="bulletin-wrapper">
+      <span class="bulletin-title"></span>
+      <span class="bulletin-text">{{seller.bulletin}}</span>
+      <i class="icon-keyboard_arrow_right"></i>
+    </div>
+    <div class="background">
+      <img width="100%" height="100%" :src="seller.avatar" alt="">
     </div>
   </div>
 </template>
 
 <script>
+import SupportIco from '@/components/support-ico/support-ico'
 export default {
-
+  props: {
+    seller: {
+      type: Object,
+      default() {
+        return {}
+      }
+    }
+  },
+  created() {
+    setTimeout(() => {
+      console.log(this.seller);
+    }, 1000);
+  },
+  components: {
+    SupportIco
+  }
 };
 </script>
 
@@ -74,4 +102,57 @@ export default {
         .text
           line-height 12px
           font-size $fontsize-small-s
+    .support-count
+      position absolute
+      right 12px
+      bottom 14px
+      display flex
+      align-items center
+      padding 0 8px
+      height 24px
+      line-height 24px
+      text-align center
+      border-radius 14px
+      background $color-background-sss
+      .count
+        font-size $fontsize-small-s
+      .icon-keyboard_arrow_right
+        margin-left 2px
+        line-height 24px
+        font-size $fontsize-small-s
+  .bulletin-wrapper
+    position relative
+    display flex
+    align-items center
+    height 28px
+    line-height 28px
+    padding 0 8px
+    background $color-background-sss
+    .bulletin-title
+      flex 0 0 22px
+      width 22px
+      height 12px
+      margin-right 4px
+      bg-image('bulletin')
+      background-size 22px 12px
+      background-repeat no-repeat
+    .bulletin-text
+      flex 1
+      font-size 10px
+      white-space nowrap
+      overflow hidden
+      text-overflow ellipsis
+      font-size $fontsize-small-s
+    .icon-keyboard_arrow_right
+      flex 0 0 10px
+      width 10px
+      font-size $fontsize-small-s
+  .background
+    position absolute
+    top 0
+    left 0
+    width 100%
+    height 100%
+    z-index -1
+    filter blur(10px)
 </style>

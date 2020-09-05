@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = 'http://ustbhuangyi.com/sell/';
+const baseUrl = '';
 
 export function get(url) {
   return function (params = {}) {

@@ -42,7 +42,8 @@ export default {
           message: '恭喜你，登录成功',
           type: 'success'
         });
-        this.$router.push({ name: 'Home', params: { userName: `${this.user}` }})
+        localStorage.setItem('name', this.user)
+        this.$router.push({ name: 'Home'})
       }
     }
   }
