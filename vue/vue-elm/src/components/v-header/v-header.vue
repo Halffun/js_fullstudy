@@ -1,5 +1,5 @@
 <template>
-  <div class="header">
+  <div class="header" @click="showDetail">
     <div class="content-wrapper">
       <div class="avatar">
         <img width="64" height="64" :src="seller.avatar" alt="">
@@ -30,11 +30,14 @@
     <div class="background">
       <img width="100%" height="100%" :src="seller.avatar" alt="">
     </div>
+    <!-- detail -->
+    <header-detail :seller="seller" v-show="detailVisible" @hide="hideDetail"></header-detail>
   </div>
 </template>
 
 <script>
 import SupportIco from '@/components/support-ico/support-ico'
+import HeaderDetail from '@/components/header-detail/header-detail'
 export default {
   props: {
     seller: {
@@ -44,13 +47,28 @@ export default {
       }
     }
   },
+  data() {
+    return {
+      detailVisible: false
+    }
+  },
+  methods: {
+    showDetail() {
+      this.detailVisible = true
+    },
+    hideDetail(e) {
+      // console.log(e);
+      this.detailVisible = e
+    }
+  },
   created() {
     setTimeout(() => {
       console.log(this.seller);
     }, 1000);
   },
   components: {
-    SupportIco
+    SupportIco,
+    HeaderDetail
   }
 };
 </script>

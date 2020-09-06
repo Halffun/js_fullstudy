@@ -1,8 +1,21 @@
 <template>
   <div id="app">
-    <v-header :seller="seller"></v-header>
     <!-- header 组件 -->
-    <router-view/>
+    <v-header :seller="seller"></v-header>
+    <div class="tab">
+      <div class="tab-wrapper">
+        <router-link to="/">商品</router-link>
+      </div>
+      <div class="tab-wrapper">
+        <router-link to="/comment">评论</router-link>
+      </div>
+      <div class="tab-wrapper">
+        <router-link to="/seller">商家</router-link>
+      </div>
+    </div>
+    <div class="page">
+      <router-view :data="seller"/>
+    </div>
   </div>
 </template>
 
@@ -39,5 +52,26 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-
+  @import './common/stylus/variable.styl';
+  .page
+    position fixed
+    top 174px
+    left 0
+    right 0
+    bottom 0
+  .tab
+    width 100%
+    display flex
+    height 36px
+    line-height 36px
+    &-wrapper
+      flex 1
+      text-align center
+      color $color-font
+      a
+        display block
+        width 100%
+      .router-link-exact-active
+        color $color-red
+        border-bottom 2px solid $color-red
 </style>
