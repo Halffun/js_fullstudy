@@ -43,7 +43,7 @@
                   <span class="old" v-if="food.oldPrice">￥{{food.oldPrice}}</span>
                 </div>
                 <div class="cart-control-wrapper">
-                  <cart-control :food="food"></cart-control>
+                  <cart-control :food="food" @add="onAdd"></cart-control>
                 </div>
               </div>
             </li>
@@ -51,12 +51,16 @@
         </cube-scroll-nav-panel>
       </cube-scroll-nav>
     </div>
+    <div class="shop-cart-wrapper">
+      <shop-cart :select-foods="selectFoods" :deliveryPrice="data.deliveryPrice" :minPrice="data.minPrice"></shop-cart>
+    </div>
   </div>
 </template>
 
 <script>
 import SupportIco from '@/components/support-ico/support-ico'
 import CartControl from '@/components/cart-control/cart-control'
+import ShopCart from '@/components/shop-cart/shop-cart'
 import { getGoods } from '@/api'
 export default {
   props: {
@@ -92,9 +96,23 @@ export default {
         })
       });
       return ret
+    },
+    selectFoods() {
+      let foods = []
+      this.goods.forEach((good) => {
+        good.foods.forEach((food) => {
+          if (food.count) {
+            foods.push(food)
+          }
+        })
+      })
+      return foods
     }
   },
   methods: {
+    onAdd(target) {
+      // 小球下落
+    },
     _getGoods() {
       getGoods({
         id: this.data.id
@@ -106,7 +124,8 @@ export default {
   },
   components: {
     SupportIco,
-    CartControl
+    CartControl,
+    ShopCart
   }
 };
 </script>
