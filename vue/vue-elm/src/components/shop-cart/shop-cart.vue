@@ -13,8 +13,24 @@
         <div class="price">¥{{totalPrice}}</div>
         <div class="desc">另需配送费¥ {{deliveryPrice}} 元</div>
       </div>
-      <div class="content-right">
-        <div class="pay not-enough" :class="{'enough': this.totalPrice > this.minPrice || this.totalPrice == this.minPrice}">{{pay}}</div>
+      <div class="content-right" @click="pay">
+        <div class="pay" :class="payClass">
+          {{payDesc}}
+        </div>    
+      </div>
+    </div>
+    <div class="ball-container">
+      <div v-for="(ball, index) in balls" :key="index">
+        <transition 
+          name="drop"
+          @before-enter="beforeDrop" 
+          @enter="dropping"
+          @after-enter="afterDrop"
+        >
+          <div class="ball" v-show="ball.show">
+            <div class="inner inner-hook"></div>
+          </div>
+        </transition>
       </div>
     </div>
   </div>
@@ -38,6 +54,18 @@ export default {
       default: 0
     }
   },
+  data() {
+    return {
+      balls: [
+        { show: false },
+        { show: false },
+        { show: false },
+        { show: false },
+        { show: false },
+      ],
+      dropBalls: []
+    }
+  },
   computed: {
     totalCount() {
       let count = 0
@@ -53,13 +81,79 @@ export default {
       });
       return price
     },
-    pay() {
+    payDesc() {
       if (this.totalPrice > this.minPrice || this.totalPrice == this.minPrice) {
         return '去结算'
       } else if(this.totalPrice == 0) {
-        return '￥20元起送'
+        return `￥${this.minPrice}元起送`
       } else {
-        return `还差￥${this.minPrice - this.totalPrice}起送`
+        return `还差￥${this.minPrice - this.totalPrice}元起送`
+      }
+    },
+    payClass() {
+      if (!this.totalCount || this.totalPrice < this.minPrice) {
+        return 'not-enough'
+      } else {
+        return 'enough'
+      }
+    }
+  },
+  methods: {
+    pay() {
+      if (this.totalPrice < this.minPrice) {
+        return
+      }
+      this.$createDialog({
+        title: '支付',
+        content: `您需要支付${this.totalPrice}元`
+      }).show()
+    },
+    drop(el) {
+      // console.log(el);
+      for (let i = 0; i < this.balls.length; i++) {
+        const ball = this.balls[i];
+        if (!ball.show) {
+          ball.show = true
+          ball.el = el
+          this.dropBalls.push(ball)
+          return
+        }
+      }
+    },
+    beforeDrop(el) {
+      let count = this.balls.length
+      while (count--) {
+        const ball = this.dropBalls[this.dropBalls.length-1]
+        if (ball.show) {
+          const rect = ball.el.getBoundingClientRect()
+          // console.log(rect);
+          const x = rect.left - 32
+          const y = -(window.innerHeight - rect.top - 22)
+          el.style.display = ''
+          el.style.webkitTransform = `translate3d(0, ${y}px, 0)`
+          el.style.transform = `translate3d(0, ${y}px, 0)`
+          const inner = el.getElementsByClassName('inner-hook')[0]
+          inner.style.webkitTransform = `translate3d(${x}px, 0, 0)`
+          inner.style.transform = `translate3d(${x}px, 0, 0)`
+        }
+      }
+    },
+    dropping(el, done) {
+      // console.log(el, done);
+      this.$nextTick(() => {
+        el.style.webkitTransform = `translate3d(0, 0, 0)`
+        el.style.transform = `translate3d(0, 0, 0)`
+        const inner = el.getElementsByClassName('inner-hook')[0]
+        inner.style.webkitTransform = `translate3d(0, 0, 0)`
+        inner.style.transform = `translate3d(0, 0, 0)`
+        el.addEventListener('transitionend', done)
+      })
+    },
+    afterDrop(el) {
+      const ball = this.dropBalls.shift()
+      if (ball) {
+        ball.show = false
+        el.style.display = 'none'
       }
     }
   }
