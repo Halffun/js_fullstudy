@@ -2,9 +2,10 @@
   <div class="home">
     <p>首页的子组件</p>
     <hr>
-    <h3>{{count}}</h3>
+    <h3>{{count}}{{abc}}</h3>
+    <p>{{$store.state.a.count}}</p>
     <div class="btn">
-      <button @click="addActions">+</button>
+      <button @click="add">+</button>
       <button @click="reduce">-</button>
     </div>
   </div>
