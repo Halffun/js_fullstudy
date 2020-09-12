@@ -9,8 +9,8 @@
       </div>
       <div class="menu">
         <ul>
-          <li>
-            <router-link to="/user">
+          <li @click="showToast">
+            <router-link to="">
               <i class="iconfont">&#xe600;</i>
               <span>个人中心</span>
             </router-link>
@@ -24,7 +24,7 @@
         </ul>
       </div>
     </div>
-    <div v-show="showSidebar" class="sidebar_mask"></div>
+    <div v-show="showSidebar" class="sidebar_mask" @click="hidebar"></div>
   </div>
 </template>
 
@@ -37,6 +37,14 @@ export default {
   },
   computed: {
     ...mapGetters(['showSidebar'])
+  },
+  methods: {
+    hidebar() {
+      this.$store.dispatch('setShowSidebar', false)
+    },
+    showToast() {
+      this.$toast('该功能暂未开放...')
+    }
   }
 }
 </script>

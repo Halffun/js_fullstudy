@@ -5,7 +5,11 @@
       <span slot="content">我的音乐</span>
       <i class="iconfont" slot="right-icon">&#xe600;</i>
     </v-header>
-    <!-- <router-view/> -->
+    <v-tab></v-tab>
+
+    <keep-alive>
+      <router-view/>
+    </keep-alive>
 
     <!-- menu -->
     <v-sidebar></v-sidebar>
@@ -14,11 +18,13 @@
 
 <script>
 import Header from '@/components/header'
+import Tab from '@/components/tab'
 import Sidebar from '@/components/sidebar'
 export default {
   components: {
     'v-header': Header,
-    'v-sidebar': Sidebar
+    'v-sidebar': Sidebar,
+    'v-tab': Tab
   }
 }
 </script>
@@ -26,12 +32,12 @@ export default {
 <style lang="stylus">
 @font-face {
   font-family: 'iconfont';  /* project id 2062317 */
-  src: url('//at.alicdn.com/t/font_2062317_w8l0gblyyl.eot');
-  src: url('//at.alicdn.com/t/font_2062317_w8l0gblyyl.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_2062317_w8l0gblyyl.woff2') format('woff2'),
-  url('//at.alicdn.com/t/font_2062317_w8l0gblyyl.woff') format('woff'),
-  url('//at.alicdn.com/t/font_2062317_w8l0gblyyl.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_2062317_w8l0gblyyl.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_2062317_lisl00znxts.eot');
+  src: url('//at.alicdn.com/t/font_2062317_lisl00znxts.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_2062317_lisl00znxts.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_2062317_lisl00znxts.woff') format('woff'),
+  url('//at.alicdn.com/t/font_2062317_lisl00znxts.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_2062317_lisl00znxts.svg#iconfont') format('svg');
 }
 .iconfont{
   font-family:"iconfont" !important;

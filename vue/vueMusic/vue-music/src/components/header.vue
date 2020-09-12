@@ -13,12 +13,13 @@
 </template>
 
 <script>
-
+// import { mapActions } from "vuex";
 
 export default {
   methods: {
+    // ...mapActions(['setShowSidebar']),
     menuShow() {
-
+      this.$store.dispatch('setShowSidebar', true)
     }
   }
 }
