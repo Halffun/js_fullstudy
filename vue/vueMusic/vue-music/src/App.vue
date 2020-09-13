@@ -11,6 +11,8 @@
       <router-view/>
     </keep-alive>
 
+    <v-play></v-play>
+
     <!-- menu -->
     <v-sidebar></v-sidebar>
   </div>
@@ -20,11 +22,14 @@
 import Header from '@/components/header'
 import Tab from '@/components/tab'
 import Sidebar from '@/components/sidebar'
+import play from '@/components/play'
+
 export default {
   components: {
     'v-header': Header,
     'v-sidebar': Sidebar,
-    'v-tab': Tab
+    'v-tab': Tab,
+    'v-play': play
   }
 }
 </script>
@@ -32,12 +37,12 @@ export default {
 <style lang="stylus">
 @font-face {
   font-family: 'iconfont';  /* project id 2062317 */
-  src: url('//at.alicdn.com/t/font_2062317_lisl00znxts.eot');
-  src: url('//at.alicdn.com/t/font_2062317_lisl00znxts.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_2062317_lisl00znxts.woff2') format('woff2'),
-  url('//at.alicdn.com/t/font_2062317_lisl00znxts.woff') format('woff'),
-  url('//at.alicdn.com/t/font_2062317_lisl00znxts.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_2062317_lisl00znxts.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_2062317_mji9r0y15bo.eot');
+  src: url('//at.alicdn.com/t/font_2062317_mji9r0y15bo.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_2062317_mji9r0y15bo.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_2062317_mji9r0y15bo.woff') format('woff'),
+  url('//at.alicdn.com/t/font_2062317_mji9r0y15bo.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_2062317_mji9r0y15bo.svg#iconfont') format('svg');
 }
 .iconfont{
   font-family:"iconfont" !important;
