@@ -35,7 +35,39 @@ const routes = [
     meta: {
       title: '注册'
     }
-  }
+  },
+  {
+    path: '/NoteClass',
+    name: 'NoteClass',
+    component: () => import ('@/views/NoteClass.vue'), 
+    meta: {
+      title: '笔记分类'
+    }
+  },
+  {
+    path: '/noteList',
+    name: 'noteList',
+    component: () => import ('@/views/NoteList.vue'), 
+    meta: {
+      title: '笔记列表'
+    }
+  },
+  {
+    path: '/noteDetail',
+    name: 'noteDetail',
+    component: () => import ('@/views/NoteDetail.vue'), 
+    meta: {
+      title: '笔记详情'
+    }
+  },
+  {
+    path: '/addNote',
+    name: 'addNote',
+    component: () => import ('@/views/AddNote.vue'), 
+    meta: {
+      title: '写笔记'
+    }
+  },
 ]
 
 const router = new VueRouter({
