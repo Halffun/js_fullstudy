@@ -30,7 +30,6 @@ export default {
   },
   methods: {
     start() {
-      console.log(111);
       this.$router.push({ path: '/item' })
     }
   }

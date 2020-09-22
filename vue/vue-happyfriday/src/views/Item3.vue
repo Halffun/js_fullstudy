@@ -5,7 +5,7 @@
           <div class="item_items">
             <span class="item_title">{{tip}}</span>
             <ul ref="change">
-              <li class="item_list" v-for="(item, index) in q1" :key="index" >
+              <li class="item_list" v-for="(item, index) in q3" :key="index" >
                 <span class="option_style" :class="{'has_choosed': chooseNum==index}" @click="choosed(index)">{{item.a}}</span>
                 <span class="option_detail">{{item.answer}}</span>
               </li>
@@ -28,7 +28,7 @@ export default {
   data() {
     return {
       chooseNum: null,
-      tip: '题目一'
+      tip: '题目三'
     }
   },
   components: {
@@ -40,10 +40,10 @@ export default {
   },
   methods: {
     choosed(index) {
-      for(let i of this.q1.keys()) {
-        if (this.q1[i].choose !== index) {
+      for(let i=0; i < this.q3.length; i++) {
+        if (this.q3[i].choose !== index) {
           this.chooseNum = index
-          this.score.a += this.q1[i].score
+          this.score.a += this.q3[i].score
         }
       }
     },
@@ -51,7 +51,7 @@ export default {
       if (this.chooseNum == null) {
         alert('您还没有选择答案哦')
       } else {
-        this.$router.push({ path: '/item2' })
+        this.$router.push({ path: '/result' })
       }
       console.log(this.score.a);
     }
@@ -104,6 +104,6 @@ export default {
   left 150px
   width 112px
   height 54px
-  background url(../assets/images/2-2.png) no-repeat
+  background url(../assets/images/3-1.png) no-repeat
   background-size 100% 100%
 </style>
