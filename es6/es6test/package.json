@@ -4,7 +4,7 @@
   "description": "这是一个ES6的教程代码",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "babel src/index.js -o dist/index.js"
   },
   "keywords": [],
   "author": "HF",
