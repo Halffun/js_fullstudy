@@ -4,20 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <style>
-    span{
-      color: red;
-    }
-    div>a>span{
-      color: red;
-    }
-  </style>
 </head>
 <body>
-  <div>
-    <a href="">
-      <span></span>
-    </a>
-  </div>
+  <div id="app">hello</div>
+
+  <script>
+    let app = document.getElementById('app')
+    app.style.left = '10px'
+    app.style.top = '10px'
+    app.style.width = '20px'
+    app.style.height = '20px'
+
+    app.style.cssText = 'left:10px;top:10px'
+  </script>
 </body>
 </html>
