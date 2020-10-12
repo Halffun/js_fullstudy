@@ -1,0 +1,18 @@
+<script>
+  function safeObj(obj) {
+    let handle = {
+      get(target, k) {
+        if (target[k] !== undefined) {
+          return Reflect.get(target, k)
+        }
+        return new Proxy({}, handle)
+      }
+    }
+    return new Proxy(obj, handle)
+  }
+  let obj = {
+    a: 1
+  }
+  const newsafeObj = safeObj(obj)
+  console.log(newsafeObj.b.c.d.e.f);
+</script>

@@ -1,0 +1,38 @@
+<script>
+  let obj = {
+    a: 1
+  }
+  // delete get set hasOwnProperty(当前这个对象)
+  //
+  Object.getPrototypeOf(obj) // obj.__proto__
+  Object.setPrototypeOf(obj, { b: 2}) // 该api 能改变obj 中的原型链
+  // 'a' in obj  （查找原型链） // true
+  // for in 能遍历到原型链中去
+  console.log(obj); // a
+  for (let k in obj) {
+    console.log(k); // a b 
+  }
+  obj.f = () => {}
+  let newObj = new Proxy(obj, {
+    get(target, k) {
+      // if (target.hasOwnProperty(k)) {}
+      return Reflect.get(target, k)
+    },
+    set() {},
+    deleteProperty() {},
+    defineProperty() {},
+    has() {},
+    // apply() {
+    //   console.log('func call');
+    // }
+  })
+  newObj.f()
+  let f = () => {}
+  let newf = new Proxy(f, {
+    apply(...rest) {
+      console.log('f call');
+      return Reflect.apply(...rest)
+    }
+  })
+  newf()
+</script>

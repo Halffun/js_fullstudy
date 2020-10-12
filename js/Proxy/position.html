@@ -1,0 +1,80 @@
+<!-- // position的取值：absolute relative fixed stick 
+// absolute 相对于 上层 有 position 定位  -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .out {
+      position: relative;
+    }
+
+    .in1 {
+      /* BFC 包含块() */
+      transform: translate3d(0, 0, 0);
+    }
+    .in3 {
+      width: 400px;
+    }
+    .in2 {
+      /* position: static absolute relative fixed */
+      /* 相对于 这个元素的包含块来计算 */
+      /* 什么是包含块？ */
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 50%;
+      /* padding: 50%; 相对于宽度 */
+      background-color: aqua;
+    }
+    /* z-index: 层叠上下文 （ps: 图层） 
+      怎么形成新的层叠上下文:
+      1. position absolute
+      2.
+      3.  
+    */
+    /* js操作 -> 回流 -> 重绘 -> 合成 */
+    /* css 里面 transform opacity 两个属性，
+    如果处于一个独立的图层，引起的变化直接到达合成阶段
+    */
+    .logo {
+      background-color: aqua;
+    }
+    img {
+      vertical-align: bottom;
+    }
+    /* 
+    hsl
+    rgba 
+    */
+    /* css3 写一个环形进度条 */
+  </style>
+</head>
+
+<body>
+  <div class="logo">
+    English<img src="https://element.eleme.cn/static/guide.0a8462c.png" alt="">
+  </div>
+  <div class="out">
+    out
+    <div class="in1">
+      in1
+      <div class="in3">
+        <div class="in2">
+          in2
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+
+</html>
