@@ -1,0 +1,68 @@
+<script>
+  // repeat 实现，使用JS实现一个repeat方法，
+  // 调用这个 repeatedFunc("hellworld")，
+  // 会alert4次 helloworld, 每次间隔3秒
+  // function repeat(func, times, wait) {
+
+  // }
+  // const repeatFunc = repeat(alert, 4, 3000)
+  // repeatedFunc("hellworld")
+
+  // 函数是一等公民：函数和其他类型(bool, string, number)一样
+  // 都可以函数参数传递也可以作用函数的返回值返回
+  // function f(a, b, c) {
+  //   // return true
+  //   return function () {}
+  // } f(1, '23', () => {})
+  // 高阶函数  =>  高阶组件
+  function repeat(func, times, wait) {
+    return (args) => {
+      for (let i = 0; i < times; i++) {
+        setTimeout(() => {
+          // alert("hellworld")
+          func()
+        }, i * wait);
+      }
+    }
+  }
+  const repeatedFunc = repeat(alert, 4, 3000)
+  repeatedFunc("hellworld")
+  
+  // foreach map filter reduce
+  // map 的使用方法 , 能不能自己写 一个 map 呢?
+  Array.prototype.map = function (func) {
+    // 1: 遍历（数组？）
+    // 2: 每一项操作一下 （）
+    // 3: 返回新数组
+    let arr = this;
+    let newArr = []
+    for (let i = 0; i < arr.length; i++) {
+      let num = arr[i]
+      newArr.push(func(num, i, arr))
+    }
+    return newArr
+  }
+  let a = [1,2,3]
+  let s = a.map(x => x + 1) // [2, 3, 4]
+
+  function readFile(fn) {
+    setTimeout(() => {
+      fn('ok')
+    }, 3000);
+  }
+  readFile((c) => {
+    console.log(c);  // 3s输出一个 'ok'
+  })
+  function f() {}
+  // f('ok')
+  // CORS 设置 CORS 的头部字段
+  // cross origin resource share
+  // Access-control-allow-origin: * | baidu.com
+  // Access-control-allow-method:
+  // Access-control-allow-headers: content-type
+  app.get('/', (ctx) => {
+    // ctx.setHeaders('Access-')
+    ctx.body = []
+  })
+  // http: 请求报文(请求头 请求体)  响应报文(响应体 响应头)
+</script>

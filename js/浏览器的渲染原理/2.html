@@ -1,0 +1,58 @@
+<!-- <script>
+  ```js
+  const width = offsetWidth
+DomA.style.width = DomA.width + 1 + 'px' // 不会
+DomB.style.width = DomA.width + 1 + 'px' // 1
+DomC.style.width = DomA.width + 1 + 'px' // 2
+```
+// 3
+// 会触发几次回流 ?
+
+// 3次
+
+</script> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .float{
+      float: left;
+    }
+    .box{
+      width: 100px;
+      border: 1px solid #000;
+    }
+    .box div{
+      clear: both;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="float">float</div>
+    <div>撒第卅几次接触CSOKPACPJ,IWJAAJXMIJ假按揭</div>
+  </div>
+  <div id="doma"></div>
+  <div id="domb"></div>
+  <div id="domc"></div>
+  <script>
+    // float: word 环绕
+    // 清除浮动：over-flow: hidden
+    // clear: both;  +div
+    const DomA = document.getElementById('doma');
+    const DomB = document.getElementById('domb');
+    const DomC = document.getElementById('domc');
+    function timer() {
+      DomA.style.width = DomA.offsetWidth + 1 + 'px'
+      DomB.style.width = DomA.offsetWidth + 1 + 'px'
+      DomC.style.width = DomA.offsetWidth + 1 + 'px'
+    }
+    setTimeout(() => {
+      timer();
+    }, 1000);
+  </script>
+</body>
+</html>
