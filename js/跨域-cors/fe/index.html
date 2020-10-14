@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- axios jquery 底层是由 XMLhttprequest -->
+  <!-- fetch -->
+  <script>
+    // 简单请求
+    // 非简单请求: 以 OPTIONS 请求方法发出一个预检(preflight)请求看允许跨域? 通过才会发出正式请求
+    // 简单请求(可以以原生 form 的形式) vs 非简单请求(fetch xml)
+    let header = new Headers()
+    header.set('Content-type', 'application/json')
+    header.set('X-custom', 'xxxxx')
+    fetch('http://localhost:9090/api', {
+      headers: header,
+      data: JSON.stringify({a:1}),
+      method: 'POST'
+    })
+    .then(res => res.json())
+    .then(r => {
+      console.log(r);
+    })
+  </script>
+</body>
+</html>
