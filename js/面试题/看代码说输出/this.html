@@ -1,0 +1,64 @@
+<script>
+  var a = function () {
+    // window
+    this.b = 3;
+  }
+  var c = new a();
+  a.prototype.b = 9;
+  var b = 7;
+  a();
+
+  console.log(b); // 3
+  // {
+  //   c: 3
+  //   __proto__: {
+  //     b: 9
+  //   }
+  // }
+  console.log(c.b); // 3
+
+  function B() {
+    this.c = 1
+    console.log(this.c);
+  }
+  B.prototype.c = 2
+  let bbbb = new B()
+
+
+  // this 指向哪里 要看他在哪里调用
+  // 1: 默认指向 window
+  // 2: 对象.xxx()
+  // 3: call/apply/bind
+  // 4: new
+
+  function sum(a, b) { return a + b }
+  sum.apply({}, [1, 2])
+  sum.bind({}, 1)(2)
+  let sum10 = sum.bind({}, 10) // 1: 绑定 this 2: 预先传递参数 类似柯里化
+  sum10(20)
+
+  let obj = {
+    fn: function () {
+      console.log(this);
+    }
+  }
+
+
+  window.data = 5;
+  var foo = {
+    data: 6,
+    click: () => {
+      console.log(this.data);
+    }
+  };
+
+  div.addEventListener('click', foo.click); // this 指向 div
+  div.addEventListener('click', function() {
+    // this   div
+  });
+
+  var bar = foo.click;
+  bar();   // this 指向 window
+
+
+</script>

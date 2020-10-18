@@ -1,0 +1,9 @@
+<script>
+  var regex = /a/g;
+  // lastIndex: 上一次匹配的位置
+  console.log(regex.lastIndex, regex.test('abcabc')); // 0 true
+  console.log(regex.lastIndex, regex.test('abcabc')); // 1 true
+  console.log(regex.lastIndex, regex.test('abcabc')); // 4 false
+  console.log(regex.lastIndex, regex.test('abcabc')); // 0 true
+
+</script>
