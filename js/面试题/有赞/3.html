@@ -1,0 +1,27 @@
+<script>
+  let p = (t) => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(t)
+      }, t);
+    })
+  }
+  // let p4 = Promise.resolve()
+  let p3 = Promise.reject('Error') // 
+  let arr = [p(1000), p(2000), p3]
+  console.time('a')
+  // all 等 所有的 Promise 都成功
+  Promise.all(arr).then(r => {
+    console.timeEnd('a')
+    console.log(r)}
+  )
+  Promise.allSettled(arr).then(r => {
+    console.log('------------', r);
+  })
+  console.time('a1')
+  // 以最快的 Promise 的状态为准
+  Promise.race(arr).then(r => {
+    console.timeEnd('a1')
+    console.log(r)}
+  )
+</script>

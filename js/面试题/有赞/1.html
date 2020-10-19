@@ -1,0 +1,38 @@
+<script>
+  // for (let i = 0; i < 5; i++) {
+  //   return
+  // }
+  // [1, 2, 3].map((_, i) => {
+  //   console.log(_);
+  //   if (i === 1) return
+  // })
+  // for of 可迭代对象(实现es6迭代器协议的对象)
+  // 数组 字符串 Map Set.... 是因为 他们实现了
+  // symbol
+  let obj = {
+    a: 1,
+    b: 2,
+    [Symbol.iterator]: () => {
+      // es6 generate
+      let keys = Object.keys(obj);
+      return {
+        next() {
+          if (keys.length === 0) {
+            return {
+              done: true,
+              value: undefined
+            }
+            let k = keys.shift()
+            return {
+              done: false,
+              value: obj[k]
+            }
+          }
+        }
+      }
+    }
+  }
+  for (let item of obj) {
+    console.log(item);
+  }
+</script>
