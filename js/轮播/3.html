@@ -1,0 +1,26 @@
+<script>
+  // 头条
+  // lodash   get 
+  const obj = {a: {b : {c : {d: 3, e: [0, 1, 2]}}}} 
+  // obj.a.b.c.d
+  // a.b.c.e[1] => a.b.c.e.1
+  function getValue(obj, str, defaultValue) {
+    // .
+    // [a, b, c, d]
+    // 访问不到返回 defaultValue
+    let a = str.split('.')
+    for (let k of a) {
+      if (obj.hasOwnProperty(k)) {
+        obj = obj[k]
+      } else {
+        return defaultValue
+      }
+    }
+    return obj
+  }
+  console.log(getValue(obj, 'a.b.c.d', 1) ); 
+  // getValue(obj, 'a.b.c.d', 1) => 3 (存在该属性返回该属性对应的值)
+    
+  // getValue(obj, 'a.b.c.d.e', 1) => 1 (出现错误返回传入的默认值)
+ 
+</script>
