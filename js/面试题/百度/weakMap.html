@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- key: value -->
+  <!-- weakMap: key一定是对象 -->
+  <script>
+    // 弱引用
+    // 强引用
+    let obj = {
+      a: 'A'
+    }   // 有 obj 引用着他 不会被销毁
+    // let wm = new WeakMap()
+    let wm = new Map()
+    wm.set(obj, 'A') // 这次引用不算数 垃圾回收 不会考虑
+    // weakMap 里面的key 是否引用外部对象
+
+    obj = null;
+    console.log(wm); // 不在
+    // 不能枚举的
+
+    function foo() {
+      let obj2 = {}
+      wm.set(obj2, 'B')
+    }
+    foo()
+    console.log(wm);
+
+    // let map = new Map()
+    // map.set('2', 2) // 按照存的顺序
+    // map.set('1', 2) // 按照存的顺序
+    // let obj = {}
+    // obj['2'] = 2
+    // obj['1'] = 1
+
+
+    // Event-loop
+    // 浏览器: 为了协调 js 网络 定时器 事件 ....
+    // macroTask microTask
+    // 
+    // event-loop:
+    // 1 window-event-loop  最常遇到的
+    // 2 worker-event-loop  前端里面, 有web-worker(另外一个线程)
+    // 3 worklet-event-loop 代码跑在worklet里面
+  </script>
+</body>
+</html>
