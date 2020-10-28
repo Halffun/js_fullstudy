@@ -14,8 +14,8 @@ server.on('request', async (req, res) => {
     res.end() 
     return
   }
-  const multiparty = new multiparty.Form()
-  multiparty.parse(req, async (err, fields, files) => {
+  const multipart = new multiparty.Form()
+  multipart.parse(req, async (err, fields, files) => {
     if(err) return
     const [chunk] = files.chunk
     const [hash] = fields.hash
