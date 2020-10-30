@@ -1,0 +1,24 @@
+<script>
+  // sum(1,2,3,4,5)
+  // sum(1,2,3)(4,5)  
+  // sum(1)(2)(3)(4)(5)
+  function add(a, b, c, d, e) {
+    return a + b + c + d + e
+  }
+  function curry(fn) {
+    let len = fn.length, args = [];
+    function T(...arg) {
+      args = args.concat(arg)
+      if (args.length >= len) {
+        let res = fn(...args)
+        args = []
+        return res
+      } else {
+        return T
+      }
+    }
+    return T
+  }
+  const sum = curry(add)
+  console.log(sum(1)(2)(3)(4)(5));
+</script>
