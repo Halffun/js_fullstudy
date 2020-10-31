@@ -1,0 +1,37 @@
+<script>
+  function create(o) {
+    let obj = {}
+    Object.setPrototypeOf(obj, o)
+    return obj
+  }
+  /*
+  {
+    xxx: xx
+    __proto__: o
+  }
+  */
+ function sleep(t) {
+   return new Promise((resolve, reject) => {
+     setTimeout(() => {
+       resolve()
+     }, t);
+   })
+ }
+//  await sleep(1000)
+ // 
+ let arr1 = [{a: 1}, {b: 2}, {c: 3}]
+ // {a: 1, b: 2, c: 3}
+ // map 循环那一项
+ // reduce 两个
+ let obj2 = arr1.reduce((pre, next) => {
+  // 1: 没有默认值 arr1[0] arr1[1]
+  // 1: 有默认值 默认值 arr1[0]
+  // 2: 上一次的返回值 下一项
+  // ....
+  // reduce 返回 最后一次结果
+  console.log(pre, next);
+  // return {}
+  return {...pre, ...next}
+ }, {})
+ console.log(obj2);
+</script>
