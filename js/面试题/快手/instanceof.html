@@ -1,0 +1,33 @@
+<script>
+  // 元编程: 修改自定义 语言默认行为
+  // 一个对象不能用 for-of 遍历, Symbol.iterator
+  // 修改 instanceof 行为       Symbol.hasInstance
+  // class MyArray {  
+  //   static [Symbol.hasInstance](instance) {
+  //     return Array.isArray(instance)
+  //   }
+  // }
+  // console.log([] instanceof MyArray); // true
+  class myArr {
+    static [Symbol.hasInstance] = function() {
+      return true
+    }
+  }
+
+  
+  console.log(Array instanceof myArr);
+  function instanceOf(obj, Constructor) {
+    let proto = obj.__proto__;
+    while (proto !== Constructor.prototype) {
+      proto = proto.__proto__
+      if (proto === null) {
+        return false
+      }
+    }
+    return true
+  }
+  console.log(instanceOf([], Array));
+  console.log(instanceOf({}, Object));
+  console.log(instanceOf(Function, Object));
+  console.log(instanceOf(Object, Function));
+</script>
