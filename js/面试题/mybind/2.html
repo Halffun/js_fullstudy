@@ -1,0 +1,39 @@
+<script>
+  // bind 只能传参两次
+  // 1
+  // 2
+  // 3
+  // 默认 obj.xxxx call/apply/bind < new
+  // 优先级
+  Function.prototype.mybind = function (THIS, ...arg1) {
+    let fn = this; // 哪个函数调用 bind 
+    // fn.prototype
+    function T(...arg2) {
+      return fn.call(this instanceof T ? this : THIS, ...arg1, ...arg2)
+    }
+    T.prototype = Object.create(fn.prototype)
+    return T
+  }
+  function sum(a, b, c) {
+    return a + b + c
+  }
+  sum.prototype.say = function() {
+    console.log(10);
+  }
+  let sum10 = sum.mybind(null, 10) // say 没在了
+  let obj = new sum10()
+  obj.say()
+  // console.log(sum10(20, 30));
+
+
+  let obj1 = {}
+  function foo() {
+    this.abc = 1
+  }
+  let Bar = foo.bind(obj1)
+  // Bar()   // this 指向 第一个参数
+  let b = new foo() // this 指向 实例
+  // 一个函数 区分 是否 被 new 调用
+  // obj1.abc
+
+</script>

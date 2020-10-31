@@ -1,0 +1,28 @@
+<script>
+  // 1 仿bind 的柯里化 即bind的参数可以分两次传
+  Function.prototype.mybind = function (THIS, ...arg1) {
+    return function T(...arg2) {
+      return fn.call(THIS, ...arg1, ...arg2)
+    }
+  }
+  // 2 增加了 仿bind的传参一个之后的new 实例可以拥有prototype
+  Function.prototype.mybind = function (THIS, ...arg1) {
+    let fn = this; // 哪个函数调用 bind 
+    // fn.prototype
+    function T(...arg2) {
+      return fn.call(THIS, ...arg1, ...arg2)
+    }
+    T.prototype = Object.create(fn.prototype)
+    return T
+  }
+  // 3 完整的仿bind 函数
+  Function.prototype.mybind = function (THIS, ...arg1) {
+    let fn = this; // 哪个函数调用 bind 
+    // fn.prototype
+    function T(...arg2) {
+      return fn.call(this instanceof T ? this : THIS, ...arg1, ...arg2)
+    }
+    T.prototype = Object.create(fn.prototype)
+    return T
+  }
+</script>
