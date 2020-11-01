@@ -1,0 +1,22 @@
+<script>
+    let obj = {
+    val: 5,
+    left: {val: 4, left: null, right: null},
+    right: {val: 3, left: null, right: null},
+  }
+
+  var pathSum = function(root, sum) {
+    let res = []
+    function preOrder(node, path) {
+      path.push(node.val)
+      if (node.left === null && node.right === null) {
+        console.log(path);
+        return
+      }
+      preOrder(node.left, path.slice(0))
+      preOrder(node.right, path.slice(0)) 
+    }
+    preOrder(root, [])
+  };
+  pathSum(obj)
+</script>
