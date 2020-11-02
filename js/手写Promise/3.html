@@ -1,0 +1,14 @@
+<script>
+  new Promise((resolve, reject) => {
+    reject('err1')
+  })
+  .then(() => {}, (e) => {
+    console.log(e);
+  })
+  .catch(() => {})
+  Promise.reject('err2')
+  window.addEventListener('unhandledrejection', 
+  (e) => {
+    console.log(e);
+  })
+</script>
