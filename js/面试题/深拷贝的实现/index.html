@@ -1,0 +1,24 @@
+<script>
+  let o = {
+    a: 1,
+    b: {
+      c: {
+        d: 1
+      }
+    }
+  }
+  function deepClone(o) {
+    let obj = {}
+    // Object.keys
+    for (let k in o) {
+      // if (!o.hasOwn)
+      if (typeof o[k] !== 'object') {
+        obj[k] = o[k]
+      } else {
+        obj[k] = deepClone(o[k])
+      }
+    }
+    return obj
+  }
+  console.log(deepClone(o));
+</script>
