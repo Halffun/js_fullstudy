@@ -3,14 +3,14 @@
     <van-image
       class="cover-image"
       radius="5px"
-      :src="movie.image"
+      :src="movie.img"
     >
       <template v-slot:error>
         <img src="https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2452075545.jpg" alt=""/>
       </template>
     </van-image>
-    <div class="title">{{movie.title}}</div>
-    <Star :rating="movie.rating"></Star>
+    <div class="title">{{movie.nm}}</div>
+    <Star :scope="movie.sc"></Star>
   </div>
 </template>
 
