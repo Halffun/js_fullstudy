@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  123
+  <script>
+    // 2 1 4 3
+    // 宏任务: script标签(浏览器) setTimeout setInterval 时间回调
+    // 广义: 宿主环境(浏览器)引起的任务
+    // 微任务: nextTick promise.then await后面的代码
+    // 广义: 微任务 js语言引起的 (js实现一个promise, promise resolve的时候 then 回调就该执行)
+    // 宏任务(取出一个) 微任务(取出所有的)
+    document.body.addEventListener('click', () => {
+      Promise.resolve().then(()=>console.log(1));
+      console.log(2)
+    });
+    document.body.addEventListener('click', () => {
+      Promise.resolve().then(()=>console.log(3));
+      console.log(4)
+    });
+    // 用鼠标点击一下屏幕，输出结果是什么；为什么？事件循环是什么，微任务是什么，他们的执行顺序是什么样？哪些你知道的方法是微任务？
+  
+  </script>
+</body>
+</html>
