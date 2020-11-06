@@ -1,4 +1,5 @@
 <script>
+  // 递归
   let a = [1, 2, 3, [4, [5, [6]]]]
   function flat(arr, deep) {
     let res = []
@@ -15,4 +16,18 @@
     return res
   }
   console.log(flat(a, 2));
+
+  // 栈
+  function flat1(a) {
+    let stack = [...a], res = [];
+    while (stack.length) {
+      let item = stack.pop()
+      if (Array.isArray(item)) {
+        stack.push(...item)
+      } else {
+        res.unshift(item)
+      }
+    }
+    return res
+  }
 </script>
