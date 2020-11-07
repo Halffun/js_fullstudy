@@ -1,0 +1,22 @@
+<script>
+  // a和b未定义
+  console.log(window.a)
+
+
+  try {
+    new Promise((resolve) => {
+      window.a.b
+    })
+  } catch (e) {
+    console.log(e)
+  }
+
+  try {
+    setTimeout(() => {
+      console.log(window.a.b)
+    }, 1000)
+  } catch (e) {
+    console.log(e)
+  }
+
+</script>
