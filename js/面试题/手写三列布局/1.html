@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* .wrap{
+      display: flex;
+    }
+    .left{
+      order: -1;
+    } */
+    .wrap{
+      overflow: hidden;
+    }
+    .wrap > div{
+      float: left;
+    }
+    .center{
+      width: 100%;
+      background-color: blue;
+      padding-left: 100px;
+      box-sizing: border-box;
+    }
+    .left, .right{
+      width: 50px;
+    }
+    .left{
+      margin-left: -100%;
+    }
+    .right{
+      margin-left: -50px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="center">center</div>
+    <div class="left">left</div>
+    <div class="right">right</div>
+  </div>
+</body>
+</html>

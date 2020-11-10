@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;padding: 0;
+    }
+    .left{
+      width: 40px;
+      background-color: blue;
+      /* display: inline-block; */
+      float: left;
+    }
+    .right{
+      /* calc css里面为数不多的一个函数 */
+      width: calc(100% - 40px);
+      background-color: green;
+      /* display: inline-block; */
+      float: left;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="left">left</div>
+    <div class="right">right</div>
+  </div>
+
+  <script>
+    function F() {
+      // this === a
+      // this.hosts === [1]
+      return this.hosts
+    }
+    F.hosts = [2]
+    F.prototype.hosts = [1]
+    let a = new F()
+    let b = F()
+    console.log(a.hosts); // undefined
+    console.log(b.hosts); // 报错
+  </script>
+</body>
+</html>
