@@ -1,0 +1,18 @@
+{
+  "name": "BuildMyWebpack",
+  "version": "1.0.0",
+  "description": "1. 打包",
+  "main": "bundle.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/parser": "^7.12.5",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/traverse": "^7.12.5"
+  }
+}
