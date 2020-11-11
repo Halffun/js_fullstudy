@@ -1,0 +1,59 @@
+<script>
+  /*
+  用 promise 实现以下功能。
+  具体：fn1和fn2都是异步函数，f1、fn2同时执行，并且fn1、fn2的结果是 fn3的参数。当fn1或者fn2发生错误时，fn3照常执行，此时的参数为空。
+  promise
+  .all
+  .race
+  .any
+  */
+  // eg:
+  function sendRquest1(t) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(t)
+      }, t)
+    })
+  }
+
+  let fn1 = async () => {
+
+    // 发送请求
+    const data = await sendRquest1(1000);
+    return data;
+  }
+  let fn2 = async () => {
+
+    // 发送请求
+    const data = await sendRquest2(2000);
+    return data;
+  }
+  let fn3 = (...args) => {
+    console.log(args);
+  }
+  // Promise.all([fn1(), fn2()]).finally(fn3)
+  // Promise.any([fn1(), fn2()]).then(fn3)
+  // Promise.allSettled([fn1(), fn2()]).then(fn3)
+  Promise.myall = function (promiseArr) {
+    return new Promise((resolve, reject) => {
+      let c = 0, len = promiseArr.length, res = [];
+      for (let i = 0; i < len; i++) {
+        promiseArr[i].then((r) => {
+          c++ ;
+          res[i] = r;
+          if (c === len) {
+            resolve(res)
+          }
+        }) 
+        .catch((err) => {
+          c++;
+          res[i] = null;
+          if (c === len) {
+            resolve(res)
+          }
+        })
+      }
+    })
+  }
+  Promise.myall([fn1(), fn2()]).then(fn3)
+</script>
