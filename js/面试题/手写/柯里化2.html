@@ -1,0 +1,18 @@
+<script>
+  function curry(fn) {
+    let arr = []
+    let len = fn.length
+    function t(...args) {
+      arr.push(...args)     
+      function sumOf() {
+        return fn.apply(null, arr)
+      }
+      t.sumOf = sumOf
+      return t 
+    }
+    return t
+  }
+  let sum = (a, b, c) => a + b + c
+  let add = curry(sum)
+  console.log(add(2,3,4).sumOf());
+</script>

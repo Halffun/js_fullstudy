@@ -1,0 +1,28 @@
+<script>
+  function curry(fn) {
+    let arr = []
+    let len = fn.length
+    function t(...args) {
+      arr.push(...args)
+      if (arr.length < len) {
+        return t
+        // return t()
+      } else {
+        return fn.apply(null, arr)
+      }
+    }
+    return t
+  }
+  let sum = (a, b, c) => a + b + c
+  let fun = curry(sum)
+  console.log(fun(1)(2)(3));
+
+  // 手写一个函数的柯里化，实现下面功能：
+
+  add(2,3,4).sumOf()
+  add(2)(3,4).sumOf()
+  add(2)(3)(4).sumOf()
+  add(2,3)(4).sumOf()
+
+
+</script>
