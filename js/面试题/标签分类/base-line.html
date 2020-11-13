@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .inline{
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <div style="writing-mode: vertical-rl;">
+    English example
+    <div class="inline"></div>
+  </div>
+  <script>
+    function Foo() {
+      // console.log(Foo.);
+      if (this instanceof Foo) {
+        console.log('被 new');
+      }
+    }
+    let a = new Foo()
+  </script>
+</body>
+</html>
