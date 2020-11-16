@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 函数式: 高阶函数 柯里化 副作用 ...
+    // 0 2 4 6 8
+    // 响应式: RX.JS rxjava
+    function throttle1(fn) {
+      let timeout;
+      return function () {
+        if (!timeout) {
+          timeout = setTimeout(() => {
+            fn()
+            timeout = null
+          }, 2000);
+        }
+      }
+    }
+    function throttle2(fn) {
+      let pre = 0;
+      return function () {
+        let now = Date.now();
+        if (now - pre >= 2000) {
+          fn();
+          pre = now;
+        }
+      }
+    }
+    function debounce(fn) {
+      let timeout;
+      return function () {
+        clearTimeout(timeout)
+        timeout = setTimeout(() => {
+          fn()
+        }, 2000);
+      }
+    }
+    function req() {
+      console.log('发出请求了');
+    }
+    let throttleReq = throttle2(req)
+    window.addEventListener('resize', throttleReq)
+  </script>
+</body>
+</html>
