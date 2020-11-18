@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <a href="/c" id="btn">/c</a>
+  <script>
+    const originpushState = window.history.pushState
+    window.history.pushState = function() {
+      console.log('url 变了');
+      originpushState.apply(this, [...arguments])
+    }
+    const btn = document.getElementById('btn')
+    btn.addEventListener('click', (e) => {
+      // console.log(1);
+      window.history.pushState('/c', {}, '/c')
+      e.preventDefault()
+    })
+    window.addEventListener('popstate', () => {
+      console.log('页面变化了', window.location);
+    })
+    // 拦截
+    const originPush = Array.prototype.push
+    Array.prototype.push = function() {
+      console.log('数组发生');
+      originPush.call(this)
+    }
+  </script>
+</body>
+</html>
