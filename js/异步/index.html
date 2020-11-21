@@ -1,0 +1,62 @@
+<!-- 代码题：
+点亮red，停1s，点亮 yellow，停2s，点亮 green 停 4s，然后循环5次。 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      background-color: grey;
+      display: inline-block;
+      margin: 30px;
+      width: 100px;
+      height: 100px;
+      border-radius: 50px;
+      ;
+    }
+
+    .green.light {
+      background-color: green;
+    }
+
+    .yellow.light {
+      background-color: yellow;
+    }
+
+    .red.light {
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="red"></div>
+  <div class="yellow"></div>
+  <div class="green"></div>
+  <button id="next" onclick="go();">开始</button>
+  <script>
+    function green() {
+      var lights = document.getElementsByTagName("div");
+      for (var i = 0; i < 3; i++)
+        lights[i].classList.remove("light")
+      document.getElementsByClassName("green")[0].classList.add('light')
+    }
+    function red() {
+      var lights = document.getElementsByTagName("div");
+      for (var i = 0; i < 3; i++)
+        lights[i].classList.remove("light")
+      document.getElementsByClassName("red")[0].classList.add('light')
+    }
+    function yellow() {
+      var lights = document.getElementsByTagName("div");
+      for (var i = 0; i < 3; i++)
+        lights[i].classList.remove("light")
+      document.getElementsByClassName("yellow")[0].classList.add('light')
+    }
+  </script>
+</body>
+
+</html>
