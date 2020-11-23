@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function jsonp(config, callback) {
+      let methodName = `jsonpcallback`
+      window[methodName] = function (res) {
+        console.log(res);
+        // callback(res)
+      }
+      const scriptNode = document.createElement('script')
+      scriptNode.src = config.url + `&jsonpCallback=${methodName}`
+      // foo(后端响应的结果)
+      document.body.appendChild(scriptNode)
+    }
+    jsonp({
+      url: 'https://c.y.qq.com/v8/fcg-bin/album_library?g_tk=1278911659&hostUin=0&format=jsonp&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0&cmd=firstpage&page=0&pagesize=20&sort=1&language=-1&genre=0&year=1&pay=0&type=-1&company=-1'},
+      (res) => {
+        console.log(res);
+      })
+  </script>
+</body>
+</html>
