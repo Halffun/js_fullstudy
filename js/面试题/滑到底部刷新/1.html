@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div style="height: 200vh;">
+    123
+  </div>
+  <div id="bottom">加载...</div>
+  <script>
+    const bottom = document.getElementById('bottom')
+    // window.addEventListener('scroll', () => {
+    //   const { top } = bottom.getBoundingClientRect()
+    //   if (top < window.innerHeight) {
+    //     console.log('到底了');
+    //   }
+    // })
+    let observer = new IntersectionObserver((entries) => {
+      if (entries && entries[0] && entries[0].isIntersecting) {
+        console.log('到底部了');
+      }
+    })
+    observer.observe(bottom)
+  </script>
+</body>
+</html>
