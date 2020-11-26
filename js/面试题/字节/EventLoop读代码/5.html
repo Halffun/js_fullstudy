@@ -1,13 +1,13 @@
 <script>
   async function async1() {
     console.log('async1 start');
-    await async2();
+    await async2();  // 这个返回的是一个 promise
     console.log('async1 end');
   }
   async function async2() {
     console.log('async2 start');
     return new Promise((resolve, reject) => {
-      resolve();
+      resolve(); // 与这个 resolve() 有关
       console.log('async2 promise');
     })
   }
