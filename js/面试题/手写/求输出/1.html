@@ -1,0 +1,30 @@
+<script>
+  var bar = {
+    myName: "bar",
+    printName: function () {
+      console.log(myName)
+      console.log(this)
+    }
+  }
+  function foo() {
+    let myName = "foo"
+    return bar.printName
+  }
+  let myName = "global"
+  let _printName = foo()
+  // bar.myName
+  _printName() // global window
+  bar.printName() // global bar
+
+  // hashChange  请求不会发送到服务器端
+
+  // 请求发送到 后端
+  // popState -> 用户前进后退
+  // pushState
+  // replaceState
+
+  // xss:
+  // cookie httpOnly true
+  // 对要插到页面里面的 html js 转义
+  // CSP 内容安全策略
+</script>
