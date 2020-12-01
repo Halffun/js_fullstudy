@@ -1,0 +1,68 @@
+<script>
+  const obj = {
+    label: "c",
+    value: 3,
+    children: [
+      { label: "a", value: 1 },
+      {
+        label: "b", value: 2,
+        children: [
+          {
+            label: 'd', value: -1
+          }
+        ]
+      },
+    ],
+  };
+  // 每个节点 平铺
+  let data = [
+    { label: "c", value: 3 },
+    { label: "a", value: 1, parentValue: 3 },
+    { label: "b", value: 2, parentValue: 3 },
+    { label: "d", value: -1, parentValue: 2 },
+  ]
+
+  // function convert(tree) {
+  //   let res = []
+  //   function walk(node, parentNode) {
+  //     if (node.children) {
+  //       for (let child of node.children) {
+  //         walk(child, node)
+  //       }
+  //     }
+  //     let t = { label: node.label, value: node.value }
+  //     if (parentNode) {
+  //       t.parentValue = parentNode.value
+  //     }
+  //     res.push(t)
+  //   }
+  //   walk(tree)
+  //   return res
+  // }
+  // console.log(convert(obj));
+
+  function buildTree(arr) {
+    let tree = arr.shift()
+    function insertByValue(value, node) {
+      // 在树里面 找 哪个节点 value === 给定的 value
+      // 把 node 插到它下面去
+      function walk(n) {
+        if (n.value === value) {
+          if (!n.children) n.children = []
+          n.children.push({label: node.label, value: node.value})
+        }
+        if (n.children) {
+          for (let child of n.children) {
+            walk(child)
+          }
+        }
+      }
+      walk(tree)
+    }
+    for(let node of arr) {
+      insertByValue(node.parentValue, node)
+    }
+    return tree
+  }
+  console.log(buildTree(data));
+</script>
