@@ -1,0 +1,62 @@
+<script>
+  const obj1 = {
+    x: {
+      m: 1
+    },
+    y: undefined,
+    z: function add(z1, z2) {
+      return z1 + z2
+    },
+    a: Symbol("foo")
+  };
+  // 深度优先
+  function deepClone1(obj) {
+    let res = {}
+    Object.keys(obj).forEach((k) => {
+      if (obj[k] && typeof obj[k] === 'object') {
+        res[k] = deepCopy(obj[k]);
+      } else {
+        // 否则直接赋值给新对象
+        res[k] = obj[k];
+      }
+    })
+    return res
+  }
+
+  // 广度优先
+  function deepClone2(obj) {
+    let queue = [], res = {};
+    Object.keys(obj).forEach(k => {
+      queue.push({
+        key: k,
+        value: obj[k],
+        parent: res
+      })
+    })
+    while (queue.length) {
+      let node = queue.shift()
+      let { key, value, parent } = node
+      if (typeof value === 'object') {
+        if (!parent[key]) parent[key] = {}
+        Object.keys(value).forEach(k => {
+          queue.push({
+            key: k,
+            value: value[k],
+            parent: parent[key]
+          })
+        })
+      } else {
+        parent[key] = value
+      }
+    }
+    return res
+  }
+  console.log(deepClone2(obj1));
+
+  // 递归(借用了系统栈) 栈  深度优先
+  // 队列                  广度优先
+  // 图
+
+  // 位图       PNG JPG  像素
+  // 矢量图     点, 线, 面
+</script>
