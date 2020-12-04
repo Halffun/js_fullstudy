@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="list"></div>
+  <script>
+    const list = document.getElementById('list')
+    // for (let i = 0; i < 1000000; i++) {
+    //   const li = document.createElement('li')
+    //   li.textContent = i
+    //   list.appendChild(li)
+    // }
+    // setTimeout requestAnimationFrame
+
+    // 10000 / 100 = 100
+    // 时间分片
+    // 虚拟列表
+    let i = 0
+    function work() {
+      if(i >= 100) return
+      i++
+      for (let i = 0; i < 1000; i++) {
+        const li = document.createElement('li')
+        li.textContent = i
+        list.appendChild(li)
+      }
+      // 等 100 条渲染完
+      setTimeout(() => {
+        work()
+      }, 16);
+    }
+    work()
+  </script>
+</body>
+</html>
