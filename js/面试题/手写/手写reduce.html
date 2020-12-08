@@ -1,0 +1,30 @@
+<script>
+  Array.prototype.myreduce = function (cb, defaultVal) {
+    let totalNum = defaultVal || this[0];
+    for (let i = defaultVal ? 0 : 1; i < this.length; i++) {
+      let num = this[i]
+      totalNum = cb(totalNum, num)
+    }
+    return totalNum
+  }
+  let arr = [9, 1, 2, 3]
+  const sum = arr.myreduce((a, b) => a + b, 0)
+  console.log(sum);
+
+  Array.prototype.myMap = function (cb) {
+    return this.reduce((pre, current) => {
+      return pre.concat(cb(current))
+    }, [])
+  }
+  const sum1 = arr.myMap((a) => a + 2)
+  console.log(sum1);
+
+  Array.prototype.myFilter = function (cb) {
+    let t = []
+      for (let i = 0; i < this.length; i ++) {
+        let num = this[i];
+        cb(num) && t.push(num);
+      }
+      return t;
+  }
+</script>
