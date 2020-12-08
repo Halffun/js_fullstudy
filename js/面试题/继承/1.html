@@ -1,6 +1,28 @@
 <script>
   // 继承
-  // 父类 属性 方法 自己也要有
+  // 父类有的属性和方法 自己也要有
   // 属性： 自己身上
-  // 
+  // 方法：公用
+  function Animal() {
+    this.name = '123'
+  }
+  Animal.prototype.say = () => {}
+  function Son() {
+    // 继承属性
+    Animal.call(this)
+    this.abc = 456
+  }
+  Son.prototype.run = () => {}
+  // 继承方法
+  Son.prototype.__proto__ = Animal.prototype;
+  // __proto__ 非标准 其他浏览器 没有
+  Object.setPrototypeOf(Son.prototype, Animal.prototype)
+  Son.prototype = Object.create(Animal.prototype)
+  
+  let s = new Son()
+  // s 能访问到哪些地方的属性
+  // s name abc
+  // Son.prototype
+  // Object.prototype
+
 </script>
