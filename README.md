@@ -1,2 +1,1 @@
-# js_fullstudy
-# js_fullstudy
+# JS-full-stack-learning
