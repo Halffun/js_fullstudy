@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const wait = 2000;
+    let pre = 0
+    window.addEventListener('resize', () => {
+      let current = Date.now()
+      if (current - pre >= wait) {
+        console.log(1);
+        pre = current
+      }
+    })
+    let pre1 = 0
+    window.addEventListener('scroll', () => {
+      let current = Date.now()
+      if (current - pre1 >= wait) {
+        console.log('scroll');
+        console.log('发出请求');
+        pre = current
+      }     
+    })
+    // 相同: 做某件事都要节流
+    // 不同: 做的事不同 (function)
+    // fn 不具有节流功能
+    function throttle(fn, wait) {
+      
+    }
+  </script>
+</body>
+</html>
