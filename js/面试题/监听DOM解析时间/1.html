@@ -1,0 +1,32 @@
+<script>
+  console.time('start')
+</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- 不阻塞 DOM 解析，但是阻塞页面渲染 -->
+</head>
+<body>
+  <script>
+    // console.time('start')
+    document.addEventListener('DOMContentLoaded',function(){
+      console.log('11111111');
+      console.timeEnd('start');
+    });
+  </script>
+  <h1>111111</h1>
+  <script>
+    // IntersectionObserver
+    PerformanceObserver
+    // MutationObserver
+    // const 
+    let observer = new PerformanceObserver((list) => {
+      console.log(list.getEntries())
+    });
+    observer.observe({entryTypes: ["navigation"]})
+  </script>
+</body>
+</html>
